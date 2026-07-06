@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAdminAuth } from "../context/AdminContext";
 import { ShieldAlert, Loader2 } from "lucide-react";
+import logo from "../assets/logo.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -29,55 +30,53 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8 font-mono">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-green-50 via-emerald-100 to-green-200 relative font-serif overflow-hidden">
+      <div className="relative z-10 bg-white/60 backdrop-blur-xl shadow-2xl rounded-3xl p-8 w-[90%] max-w-md border border-green-200 transition-all duration-500 hover:shadow-green-300/50">
         <div>
-          <div className="mx-auto h-12 w-12 flex items-center justify-center rounded-full bg-emerald-100">
-            <ShieldAlert className="h-8 w-8 text-emerald-600" />
+          <div className="flex justify-center mb-6">
+            <img src={logo} alt="Medicare Logo" className="w-28 h-28 object-contain drop-shadow-lg" />
           </div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h2 className="text-3xl font-bold text-center text-emerald-700 tracking-wide mb-2">
             Admin Portal
           </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
+          <p className="text-center text-green-600 mb-6 text-sm">
             Sign in with your admin credentials
           </p>
         </div>
         
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+        <form className="space-y-5" onSubmit={handleSubmit}>
           {error && (
-            <div className="bg-red-50 text-red-700 p-3 rounded-md text-sm text-center">
+            <div className="bg-red-50/90 border border-red-200 text-red-700 p-3 rounded-full text-sm text-center shadow-sm">
               {error}
             </div>
           )}
           
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div>
-              <input
-                type="email"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 sm:text-sm"
-                placeholder="Admin Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div>
-              <input
-                type="password"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+          <div>
+            <input
+              type="email"
+              required
+              className="w-full px-5 py-3 rounded-full border border-green-300 bg-white/80 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-shadow"
+              placeholder="Admin Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              required
+              className="w-full px-5 py-3 rounded-full border border-green-300 bg-white/80 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-shadow"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
 
           <div>
             <button
               type="submit"
               disabled={isLoading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 disabled:opacity-70 transition-colors"
+              className="w-full py-3 bg-linear-to-r from-emerald-400 to-green-600 text-white font-semibold rounded-full hover:shadow-lg disabled:opacity-70 transition-all duration-300 flex justify-center items-center"
             >
               {isLoading ? <Loader2 className="animate-spin h-5 w-5" /> : "Sign In"}
             </button>
