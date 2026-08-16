@@ -28,3 +28,6 @@ Thumbs.db
 # Gemini
 .agents/
 .gemini/
+
+
+LEARNING_JOURNAL.md
