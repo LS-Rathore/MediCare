@@ -1,8 +1,6 @@
 import express from "express";
-import multer from "multer";
-import {createService, getServiceById, getServices, updateService, deleteService} from "../controllers/serviceController.js"
-
-const upload = multer ({dest: "/temp"});
+import upload from "../middlewares/multer.js";
+import { createService, getServiceById, getServices, updateService, deleteService } from "../controllers/serviceController.js";
 const serviceRouter = express.Router();
 
 serviceRouter.get("/", getServices);
